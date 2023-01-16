@@ -2,7 +2,7 @@
   "id": "{59C78FFB-CFA1-773F-B6E6-2879957FF36E}",
   "name": "Victron ModBus",
   "author": "Hermann Dötsch",
-  "url": "https://github.com/symcode",
+  "url": "https://github.com/symcode/VictronModbus",
   "compatibility": {
     "version": "5.5"
   },
