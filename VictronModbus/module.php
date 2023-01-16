@@ -112,12 +112,12 @@ class VictronModbus extends Module
                 //$value = $this->modbus->readMultipleRegisters($this->unit_id, (int)$address, $config['count']);
                 $value = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => $address , "Quantity" => 1, "Data" => "")));
                 $value = (unpack("n*", substr($value,2)));
-                $this->SendDebug("GetData", " ".count($value)." : ".$value[1], 0);
+
                 // continue if value is still an array
                 if (is_array($value)) {
                     continue;
                 }
-
+                $this->SendDebug("GetData", " ".count($value)." : ".$value[1], 0);
                 // map value
                 if (isset($config['mapping'][$value])) {
                     $value = $this->Translate($config['mapping'][$value]);
@@ -133,7 +133,7 @@ class VictronModbus extends Module
                 } elseif ($config['scale'] == -10) {
                     $value = $value[1]*-10;
                 }
-                $this->SendDebug("GetData", " ".count($value)." : ".$value, 0);
+                $this->SendDebug("ScaleData", " ".count($value)." : ".$value, 0);
                 // set profile
                 if (isset($config['profile']) && !isset($this->profile_mappings[$config['name']])) {
                     $this->profile_mappings[$config['name']] = $config['profile'];
@@ -198,13 +198,13 @@ class VictronModbus extends Module
             case 'kWh.Fixed':
                 IPS_CreateVariableProfile($profile_id, 2); // float
                 IPS_SetVariableProfileDigits($profile_id, 0); // 0 decimals
-                IPS_SetVariableProfileText($profile_id, '', ' kWh'); // kWh
+                IPS_SetVariableProfileText($profile_id, '', ' kWh'); // kWh.Fixed
                 IPS_SetVariableProfileIcon($profile_id, 'Electricity');
                 break;
             case 'Hours':
                 IPS_CreateVariableProfile($profile_id, 2); // float
                 IPS_SetVariableProfileDigits($profile_id, 1); // 1 decimal
-                IPS_SetVariableProfileText($profile_id, '', ' ' . $this->Translate('h')); // h
+                IPS_SetVariableProfileText($profile_id, '', ' ' . $this->Translate('h')); // Hours
                 IPS_SetVariableProfileIcon($profile_id, 'Clock');
                 break;
         endswitch;
