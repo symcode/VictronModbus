@@ -127,11 +127,10 @@ class VictronModbus extends Module
                 } elseif ($config['scale'] == 100) {
                     $value = (float)$value[1]/100;
                 }
-                $this->SendDebug("ScaleData", " : ".$value, 0);
+
                 // set profile
                 if (isset($config['profile']) && !isset($this->profile_mappings[$config['name']])) {
                     $this->profile_mappings[$config['name']] = $config['profile'];
-                    $this->SendDebug("Profile", " : ".print_r($value), 0);
                 }
 
                 // set archive
