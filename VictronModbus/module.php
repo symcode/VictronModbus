@@ -114,9 +114,9 @@ class VictronModbus extends Module
                 $value = (unpack("n*", substr($value,2)));
 
                 // continue if value is still an array
-                if (is_array($value)) {
+                /**if (is_array($value)) {
                     continue;
-                }
+                }*/
                 $this->SendDebug("GetData", " ".count($value)." : ".$value[1], 0);
                 // map value
                 if (isset($config['mapping'][$value])) {
