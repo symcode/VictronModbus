@@ -38,32 +38,16 @@ class VictronModbus extends IPSModule {
 
         $Address = 0x334;
         $GridL1 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => $Address , "Quantity" => 2, "Data" => "")));
-        if($GridL1 === false)
-            return;
         $GridL1 = (unpack("n*", substr($GridL1,2)));
-
+        SetValue($this->GetIDForIdent("GridL1"), ($GridL1[1] + ($GridL1[2] << 16))/1);
         $Address = 0x335;
         $GridL2 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => $Address , "Quantity" => 2, "Data" => "")));
-        if($GridL2 === false)
-            return;
         $GridL2 = (unpack("n*", substr($GridL2,2)));
-
+        SetValue($this->GetIDForIdent("GridL2"), ($GridL2[1] + ($GridL2[2] << 16))/1);
         $Address = 0x336;
         $GridL3 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => $Address , "Quantity" => 2, "Data" => "")));
-        if($GridL3 === false)
-            return;
         $GridL3 = (unpack("n*", substr($GridL3,2)));
-
-
-        //if(IPS_GetProperty(IPS_GetInstance($this->InstanceID)['ConnectionID'], "SwapWords")) {
-            SetValue($this->GetIDForIdent("GridL1"), ($GridL1[1] + ($GridL1[2] << 16))/1);
-            SetValue($this->GetIDForIdent("GridL2"), ($GridL2[1] + ($GridL2[2] << 16))/1);
-            SetValue($this->GetIDForIdent("GridL3"), ($GridL3[1] + ($GridL3[2] << 16))/1);
-        /**} else {
-            SetValue($this->GetIDForIdent("GridL1"), ($GridL1[2] + ($GridL1[1] << 16))/1);
-            SetValue($this->GetIDForIdent("GridL2"), ($GridL2[2] + ($GridL2[1] << 16))/1);
-            SetValue($this->GetIDForIdent("GridL3"), ($GridL3[2] + ($GridL3[1] << 16))/1);
-        }*/
+        SetValue($this->GetIDForIdent("GridL3"), ($GridL3[1] + ($GridL3[2] << 16))/1);
 
     }
 
