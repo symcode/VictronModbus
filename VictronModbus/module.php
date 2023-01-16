@@ -103,6 +103,7 @@ class VictronModbus extends Module
         // read data
         foreach ($addresses as $address => $config) {
             try {
+                $this->SendDebug("ReadData", ": ".$address,0);
                 // wait some time before continue
                 if (count($addresses) > 2) {
                     IPS_Sleep(200);
@@ -148,7 +149,7 @@ class VictronModbus extends Module
             $this->SaveData();
         }
     }
-                public function RequestRead() {
+    public function RequestRead() {
 
         //$Address = 0x334;
         $GridL1 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => 820 , "Quantity" => 1, "Data" => "")));
