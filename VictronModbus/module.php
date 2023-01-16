@@ -86,7 +86,7 @@ class VictronModbus extends Module
     public function SaveData()
     {
         // loop data and create variables
-        $position = ($this->update == 'values') ? count(VictronModbusRegister::device_addresses) - 1 : 0;
+        $position = ($this->update == 'values') ? count(VictronModbusRegister::value_addresses) - 1 : 0;
         foreach ($this->data AS $key => $value) {
             $this->CreateVariableByIdentifier([
                 'parent_id' => $this->InstanceID,
