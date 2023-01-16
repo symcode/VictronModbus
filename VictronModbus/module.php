@@ -1,5 +1,7 @@
 <?php
-class VMB extends IPSModule {
+
+declare(strict_types=1);
+class VictronModbus extends IPSModule {
     public function __construct($InstanceID) {
 
         //Never delete this line!
@@ -16,7 +18,7 @@ class VMB extends IPSModule {
         $this->RegisterPropertyInteger("Poller", 0);
         $this->RegisterPropertyInteger("Phase", 1);
 
-        $this->RegisterTimer("Poller", 0, "VMB_RequestRead(\$_IPS['TARGET']);");
+        $this->RegisterTimer("Poller", 0, "VictronModbus_RequestRead(\$_IPS['TARGET']);");
 
     }
 

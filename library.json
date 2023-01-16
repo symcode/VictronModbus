@@ -1,6 +1,6 @@
 {
   "id": "{8725FDA5-7CE6-20EB-DF65-1D71413C0417}",
-  "name": "VictronModbus",
+  "name": "Victron Modbus",
   "author": "Hermann DÃ¶tsch",
   "url": "https://github.com/symcode/VictronModbus",
   "compatibility": {

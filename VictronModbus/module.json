@@ -1,6 +1,6 @@
 {
   "id": "{50C600B2-7FC3-D78C-0833-80EE0D5BE539}",
-  "name": "VictronModbus",
+  "name": "Victron Modbus",
   "type": 3,
   "vendor": "Victron",
   "aliases": [],
@@ -9,6 +9,6 @@
   "implemented": [
     "{018EF6B5-AB94-40C6-AA53-46943E824ACF}"
   ],
-  "prefix": "VMB",
+  "prefix": "VictronModbus",
   "url": "https://github.com/symcode/VictronModbus"
 }
