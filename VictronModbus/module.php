@@ -103,7 +103,6 @@ class VictronModbus extends Module
         // read data
         foreach ($addresses as $address => $config) {
             try {
-                $this->SendDebug("ReadData", "".$address." : ".print_r($config),0);
                 // wait some time before continue
                 if (count($addresses) > 2) {
                     IPS_Sleep(200);
@@ -114,6 +113,7 @@ class VictronModbus extends Module
 
                 // map value
                 if (isset($config['mapping'][$value])) {
+                    $this->SendDebug("Before", " : ".print_r($value), 0);
                     $value = $this->Translate($config['mapping'][$value]);
                     $this->SendDebug("Mapping", " : ".print_r($value), 0);
                 }
