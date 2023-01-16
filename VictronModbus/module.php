@@ -119,7 +119,7 @@ class VictronModbus extends Module
                 // convert decimals
 
                 elseif ($config['scale'] == 0) {
-                    $value = (int)$value[1];
+                    $value = (string)$value[1];
                 } elseif ($config['scale'] == 1) {
                     $value = (float)$value[1];
                 } elseif ($config['scale'] == 10) {
