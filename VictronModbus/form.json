@@ -1,13 +1,55 @@
 {
-  "elements":
-  [
-    { "name": "Phase", "type": "Select", "caption": "Phase",
-      "options": [
-        { "label": "L1", "value": 1 },
-        { "label": "L2", "value": 2 },
-        { "label": "L3", "value": 3 }
-      ]
+  "elements": [
+    {
+      "type": "Label",
+      "label": "___ [ Module Settings ] _______________________________________________________________________________"
     },
-    { "name": "Poller", "type": "IntervalBox", "caption": "milliseconds" }
+    {
+      "type": "Label",
+      "label": "Interval, when all values will updating."
+    },
+    {
+      "type": "IntervalBox",
+      "name": "interval",
+      "caption": "Seconds"
+    },
+    {
+      "type": "Label",
+      "label": "___ [ Logging ] ________________________________________________________________________________________"
+    },
+    {
+      "type": "CheckBox",
+      "name": "log",
+      "caption": "enable logging"
+    }
+  ],
+  "status": [
+    {
+      "code": 101,
+      "icon": "inactive",
+      "caption": "Please enter the ip address and the tcp port of your Victron Modbus device."
+    },
+    {
+      "code": 102,
+      "icon": "active",
+      "caption": "Connection has been established."
+    },
+    {
+      "code": 201,
+      "icon": "error",
+      "caption": "Error: Please enter the ip address and the tcp port of your Victron Modbus device."
+    },
+    {
+      "code": 202,
+      "icon": "error",
+      "caption": "Error: Could not read data from your Victron Modbus device."
+    }
+  ],
+  "actions": [
+    {
+      "type": "Button",
+      "label": "Update Values",
+      "onClick": "VictronModbus_UpdateValues($id, true);"
+    }
   ]
 }

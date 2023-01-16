@@ -1,7 +1,16 @@
 <?php
 
 // declare(strict_types=1);
-class VictronModbus extends IPSModule {
+define('__ROOT__', dirname(dirname(__FILE__)));
+define('__MODULE__', dirname(__FILE__));
+
+require_once(__ROOT__ . '/libs/helpers/autoload.php');
+require_once(__MODULE__ . '/VictronModbusRegister.php');
+
+class VictronModbus extends Module
+{
+    use InstanceHelper;
+    public $data = [];
     public function __construct($InstanceID) {
 
         //Never delete this line!
@@ -15,23 +24,40 @@ class VictronModbus extends IPSModule {
 
         $this->ConnectParent("{A5F663AB-C400-4FE5-B207-4D67CC030564}");
 
-        $this->RegisterPropertyInteger("Poller", 0);
-        $this->RegisterPropertyInteger("Phase", 1);
+        $this->RegisterPropertyInteger('interval', 5);
 
-        $this->RegisterTimer("Poller", 0, "VictronModbus_RequestRead(\$_IPS['TARGET']);");
+        // register timers
+        $this->RegisterTimer('UpdateData', 0, $this->_getPrefix() . '_UpdateValues($_IPS[\'TARGET\'], false);');
 
     }
+    /**
+     * execute, when kernel is ready
+     */
+    protected function onKernelReady()
+    {
+        $this->applied = true;
 
-    public function ApplyChanges() {
-        //Never delete this line!
-        parent::ApplyChanges();
+        // update timer
+        $this->SetTimerInterval('UpdateData', $this->ReadPropertyInteger('interval') * 1000);
 
-
-        $this->RegisterVariableFloat("GridL1", "Grid L1", "Watt.14490", 1);
-        $this->RegisterVariableFloat("GridL2", "Grid L2", "Watt.14490", 2);
-        $this->RegisterVariableFloat("GridL3", "Grid L3", "Watt.14490", 3);
-        // $this->RegisterVariableFloat("kWh", "Total kWh", "Electricity", 4);
-        $this->SetTimerInterval("Poller", $this->ReadPropertyInteger("Poller"));
+        $this->SaveData();
+    }
+    /**
+     * save data to variables
+     */
+    private function SaveData()
+    {
+        // loop data and create variables
+        $position = count(VictronModbusRegister::value_addresses);
+        foreach ($this->data AS $key => $value) {
+            $this->CreateVariableByIdentifier([
+                'parent_id' => $this->InstanceID,
+                'name' => $key,
+                'value' => $value,
+                'position' => $position
+            ]);
+            $position++;
+        }
     }
 
     public function RequestRead() {
