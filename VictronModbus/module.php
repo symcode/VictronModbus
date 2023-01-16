@@ -103,7 +103,7 @@ class VictronModbus extends Module
         // read data
         foreach ($addresses as $address => $config) {
             try {
-                $this->SendDebug("ReadData", " : ".$address,0);
+                $this->SendDebug("ReadData", "".$address." : ".print_r($config),0);
                 // wait some time before continue
                 if (count($addresses) > 2) {
                     IPS_Sleep(200);
