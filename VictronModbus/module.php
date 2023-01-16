@@ -56,13 +56,13 @@ class VictronModbus extends IPSModule {
 
 
         if(IPS_GetProperty(IPS_GetInstance($this->InstanceID)['ConnectionID'], "SwapWords")) {
-            SetValue($this->GetIDForIdent("GridL1"), ($GridL1[1] + ($GridL1[2] << 16))/10);
-            SetValue($this->GetIDForIdent("GridL2"), ($GridL2[1] + ($GridL2[2] << 16))/10);
-            SetValue($this->GetIDForIdent("GridL3"), ($GridL3[1] + ($GridL3[2] << 16))/10);
+            SetValue($this->GetIDForIdent("GridL1"), ($GridL1[1] + ($GridL1[2] << 16))/1);
+            SetValue($this->GetIDForIdent("GridL2"), ($GridL2[1] + ($GridL2[2] << 16))/1);
+            SetValue($this->GetIDForIdent("GridL3"), ($GridL3[1] + ($GridL3[2] << 16))/1);
         } else {
-            SetValue($this->GetIDForIdent("GridL1"), ($GridL1[2] + ($GridL1[1] << 16))/10);
-            SetValue($this->GetIDForIdent("GridL2"), ($GridL2[2] + ($GridL2[1] << 16))/10);
-            SetValue($this->GetIDForIdent("GridL3"), ($GridL3[2] + ($GridL3[1] << 16))/10);
+            SetValue($this->GetIDForIdent("GridL1"), ($GridL1[2] + ($GridL1[1] << 16))/1);
+            SetValue($this->GetIDForIdent("GridL2"), ($GridL2[2] + ($GridL2[1] << 16))/1);
+            SetValue($this->GetIDForIdent("GridL3"), ($GridL3[2] + ($GridL3[1] << 16))/1);
         }
 
     }
