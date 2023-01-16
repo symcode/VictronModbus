@@ -40,7 +40,7 @@ class VictronModbus extends IPSModule {
         $GridL1 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => 820 , "Quantity" => 2, "Data" => "")));
         //$this->SendDebug("GetData", "Grid L1".": ".$GridL1, 0);
         $GridL1 = (unpack("n*", substr($GridL1,2)));
-        $this->SendDebug("GetData", "Grid L1".": ".$GridL1, 0);
+        $this->SendDebug("GetData", "Grid L1".": ".$GridL1[1].",".$GridL1[2], 0);
         SetValue($this->GetIDForIdent("GridL1"), ($GridL1[1] + ($GridL1[2] << 16))/1);
         $this->SendDebug("GetData", "Grid L1".": ".($GridL1[1] + ($GridL1[2] << 16))/1, 0);
 
@@ -48,7 +48,7 @@ class VictronModbus extends IPSModule {
         $GridL2 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => 821 , "Quantity" => 2, "Data" => "")));
         //$this->SendDebug("GetData", "Grid L2".": ".$GridL2, 0);
         $GridL2 = (unpack("n*", substr($GridL2,2)));
-        $this->SendDebug("GetData", "Grid L2".": ".$GridL2, 0);
+        $this->SendDebug("GetData", "Grid L2".": ".$GridL2[1].",".$GridL2[2], 0);
         SetValue($this->GetIDForIdent("GridL2"), ($GridL2[1] + ($GridL2[2] << 16))/1);
         $this->SendDebug("GetData", "Grid L2".": ".($GridL2[1] + ($GridL2[2] << 16))/1, 0);
 
@@ -56,7 +56,7 @@ class VictronModbus extends IPSModule {
         $GridL3 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => 822 , "Quantity" => 2, "Data" => "")));
         //$this->SendDebug("GetData", "Grid L3".": ".$GridL3, 0);
         $GridL3 = (unpack("n*", substr($GridL3,2)));
-        $this->SendDebug("GetData", "Grid L3".": ".$GridL3, 0);
+        $this->SendDebug("GetData", "Grid L3".": ".$GridL3[1].",".$GridL3[2], 0);
         SetValue($this->GetIDForIdent("GridL3"), ($GridL3[1] + ($GridL3[2] << 16))/1);
         $this->SendDebug("GetData", "Grid L3".": ".($GridL3[1] + ($GridL3[2] << 16))/1, 0);
 
