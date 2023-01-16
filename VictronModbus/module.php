@@ -37,7 +37,7 @@ class VictronModbus extends IPSModule {
     public function RequestRead() {
 
         //$Address = 0x334;
-        $GridL1 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => 820 , "Quantity" => 2, "Data" => "")));
+        $GridL1 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => 820 , "Quantity" => 1, "Data" => "")));
         //$this->SendDebug("GetData", "Grid L1".": ".$GridL1, 0);
         $GridL1 = (unpack("n*", substr($GridL1,2)));
         $this->SendDebug("GetData", "Grid L1".": ".$GridL1[1].",".$GridL1[2], 0);
@@ -45,7 +45,7 @@ class VictronModbus extends IPSModule {
         $this->SendDebug("GetData", "Grid L1".": ".($GridL1[1] + ($GridL1[2] << 16))/1, 0);
 
         //$Address = 0x335;
-        $GridL2 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => 821 , "Quantity" => 2, "Data" => "")));
+        $GridL2 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => 821 , "Quantity" => 1, "Data" => "")));
         //$this->SendDebug("GetData", "Grid L2".": ".$GridL2, 0);
         $GridL2 = (unpack("n*", substr($GridL2,2)));
         $this->SendDebug("GetData", "Grid L2".": ".$GridL2[1].",".$GridL2[2], 0);
@@ -53,7 +53,7 @@ class VictronModbus extends IPSModule {
         $this->SendDebug("GetData", "Grid L2".": ".($GridL2[1] + ($GridL2[2] << 16))/1, 0);
 
         //$Address = 0x336;
-        $GridL3 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => 822 , "Quantity" => 2, "Data" => "")));
+        $GridL3 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => 822 , "Quantity" => 1, "Data" => "")));
         //$this->SendDebug("GetData", "Grid L3".": ".$GridL3, 0);
         $GridL3 = (unpack("n*", substr($GridL3,2)));
         $this->SendDebug("GetData", "Grid L3".": ".$GridL3[1].",".$GridL3[2], 0);
