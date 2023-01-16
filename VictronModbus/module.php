@@ -41,7 +41,7 @@ class VictronModbus extends Module
         $this->RegisterPropertyInteger('interval', 5);
 
         // register timers
-        $this->RegisterTimer('UpdateData', 0, $this->_getPrefix() . '_UpdateValues($_IPS[\'TARGET\'], false);');
+        $this->RegisterTimer('UpdateData', 0, $this->_getPrefix() . '_SaveData($_IPS[\'TARGET\'], false);');
 
     }
     /**
@@ -62,7 +62,7 @@ class VictronModbus extends Module
     private function SaveData()
     {
         // loop data and create variables
-        $position = count(VictronModbusRegister::value_addresses);
+        $position = 1 ? count(VictronModbusRegister::device_addresses) - 1 : 0;
         foreach ($this->data AS $key => $value) {
             $this->CreateVariableByIdentifier([
                 'parent_id' => $this->InstanceID,
