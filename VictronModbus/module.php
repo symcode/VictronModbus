@@ -22,7 +22,8 @@ class VictronModbus extends Module
 {
     use InstanceHelper;
     public $data = [];
-    //public $position = [];
+    private $update = true;
+    private $applied = false;
     protected $profile_mappings = [];
     protected $archive_mappings = [];
     /**public function __construct($InstanceID) {
@@ -40,7 +41,7 @@ class VictronModbus extends Module
         $this->ConnectParent("{A5F663AB-C400-4FE5-B207-4D67CC030564}");
 
         $this->RegisterPropertyInteger('interval', 5);
-        $this->RegisterTimer('UpdateData', 0, $this->_getPrefix() . '_SaveData($_IPS[\'TARGET\'], false);');
+        $this->RegisterTimer('UpdateData', 0, $this->_getPrefix() . '_UpdateValues($_IPS[\'TARGET\'], false);');
 
     }
     /**
@@ -54,14 +55,38 @@ class VictronModbus extends Module
         $this->SetTimerInterval('UpdateData', $this->ReadPropertyInteger('interval') * 1000);
 
         $this->SaveData();
+
     }
+    /**
+     * Update everything
+     */
+    public function Update()
+    {
+        $this->UpdateValues();
+    }
+    /**
+     * read & update update registers
+     * @param bool $applied
+     */
+    public function UpdateValues($applied = false)
+    {
+
+        $this->update = 'values';
+        $this->ReadData(VictronModbusRegister::value_addresses);
+
+    }
+
+    /**
+     * read & update device registers VictronModbus_UpdateDevice
+     * @param bool $applied
+     */
     /**
      * save data to variables
      */
     public function SaveData()
     {
         // loop data and create variables
-        $position = 1 ? count(VictronModbusRegister::value_addresses) - 1 : 0;
+        $position = ($this->update == 'values') ? count(VictronModbusRegister::device_addresses) - 1 : 0;
         foreach ($this->data AS $key => $value) {
             $this->CreateVariableByIdentifier([
                 'parent_id' => $this->InstanceID,
@@ -73,7 +98,57 @@ class VictronModbus extends Module
         }
     }
 
-    public function RequestRead() {
+    private function ReadData(array $addresses)
+    {
+        // read data
+        foreach ($addresses as $address => $config) {
+            try {
+                // wait some time before continue
+                if (count($addresses) > 2) {
+                    IPS_Sleep(200);
+                }
+                // read register
+                //$value = $this->modbus->readMultipleRegisters($this->unit_id, (int)$address, $config['count']);
+                $value = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => $address , "Quantity" => 1, "Data" => "")));
+                $value = (unpack("n*", substr($value,2)));
+                // continue if value is still an array
+                if (is_array($value)) {
+                    continue;
+                }
+
+                // map value
+                if (isset($config['mapping'][$value])) {
+                    $value = $this->Translate($config['mapping'][$value]);
+                } // convert decimals
+                elseif ($config['scale'] == 10) {
+                    $value = $value*10;
+                } elseif ($config['format'] == 0.01) {
+                    $value = $value*0.01;
+                } elseif ($config['format'] == -10) {
+                    $value = $value*-10;
+                }
+
+                // set profile
+                if (isset($config['profile']) && !isset($this->profile_mappings[$config['name']])) {
+                    $this->profile_mappings[$config['name']] = $config['profile'];
+                }
+
+                // set archive
+                if (isset($config['archive'])) {
+                    $this->archive_mappings[$config['name']] = $config['archive'];
+                }
+
+                // append data
+                $this->data[$config['name']] = $value;
+            }
+            catch (Exception $e) {
+            }
+
+            // save data
+            $this->SaveData();
+        }
+    }
+                public function RequestRead() {
 
         //$Address = 0x334;
         $GridL1 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => 820 , "Quantity" => 1, "Data" => "")));
