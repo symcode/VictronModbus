@@ -3,7 +3,7 @@
   "name": "Victron Modbus",
   "type": 3,
   "vendor": "Victron",
-  "aliases": [Modbus],
+  "aliases": [],
   "parentRequirements": ["{77B31ABB-18FA-4B91-BB63-E5B2AB5588F4}"],
   "childRequirements": [],
   "implemented": [
