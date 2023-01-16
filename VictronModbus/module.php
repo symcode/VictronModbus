@@ -112,6 +112,7 @@ class VictronModbus extends Module
                 //$value = $this->modbus->readMultipleRegisters($this->unit_id, (int)$address, $config['count']);
                 $value = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => $address , "Quantity" => 1, "Data" => "")));
                 $value = (unpack("n*", substr($value,2)));
+                $this->SendDebug("GetData", " ".$address." : ".$value, 0);
                 // continue if value is still an array
                 if (is_array($value)) {
                     continue;
