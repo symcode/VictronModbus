@@ -112,9 +112,8 @@ class VictronModbus extends Module
                 $value = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => $address , "Quantity" => $config['count'], "Data" => "")));
                 $value = (unpack("n*", substr($value,2)));
 
-                $this->SendDebug("GetData", " : ".print_r($value), 0);
                 // map value
-                if (isset($config['mapping'][$value])) {
+                if (isset($config['mapping'])) {
                     $value = $config['mapping'][$value];
                     $this->SendDebug("Mapping", " : ".print_r($value), 0);
                 }
