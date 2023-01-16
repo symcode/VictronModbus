@@ -1,6 +1,6 @@
 {
   "id": "{50C600B2-7FC3-D78C-0833-80EE0D5BE539}",
-  "name": "Victron Modbus",
+  "name": "VictronModbus",
   "type": 3,
   "vendor": "Victron",
   "aliases": [],
