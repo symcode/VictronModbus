@@ -124,16 +124,16 @@ class VictronModbus extends Module
                 }
                 // convert decimals
 
-                elseif ($config['format'] == 1) {
+                elseif ($config['scale'] == 1) {
                     $value = $value[1];
                 } elseif ($config['scale'] == 10) {
                     $value = $value[1]*10;
-                } elseif ($config['format'] == 0.01) {
+                } elseif ($config['scale'] == 0.01) {
                     $value = $value[1]*0.01;
-                } elseif ($config['format'] == -10) {
+                } elseif ($config['scale'] == -10) {
                     $value = $value[1]*-10;
                 }
-
+                $this->SendDebug("GetData", " ".count($value)." : ".$value, 0);
                 // set profile
                 if (isset($config['profile']) && !isset($this->profile_mappings[$config['name']])) {
                     $this->profile_mappings[$config['name']] = $config['profile'];
