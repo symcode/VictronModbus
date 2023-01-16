@@ -113,16 +113,13 @@ class VictronModbus extends Module
 
                 // map value
                 if (isset($config['mapping'][$value])) {
-                    $value = (int)$value;
-                    $this->SendDebug("Before", " : ".print_r($value), 0);
                     $value = $this->Translate($config['mapping'][$value]);
-                    $this->SendDebug("Mapping", " : ".print_r($value), 0);
                 }
 
                 // convert decimals
 
                 elseif ($config['scale'] == 0) {
-                    $value = $value[1].$value[2].$value[3].$value[4].$value[5].$value[6];
+                    $value = (int)$value[1];
                 } elseif ($config['scale'] == 1) {
                     $value = (float)$value[1];
                 } elseif ($config['scale'] == 10) {
