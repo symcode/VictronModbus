@@ -23,7 +23,7 @@ class VictronModbusRegister
                 'name' => 'Serial (System)',
                 'count' => 6,
                 'type' => 'U16',
-                'scale' => 1
+                'scale' => 0
             ],
             806 => [
                 'name' => 'CCGX Relay 1 state',
@@ -263,21 +263,7 @@ class VictronModbusRegister
                 'type' => 'S16',
                 'scale' => 1,
                 'profile' => 'Watt'
-            ]/**,
-            865 => [
-                'name' => 'VE.Bus charge current (System)',
-                'count' => 1,
-                'type' => 'S16',
-                'scale' => 10,
-                'profile' => '~Ampere'
-            ],
-            866 => [
-                'name' => 'VE.Bus charge power (System)',
-                'count' => 1,
-                'type' => 'S16',
-                'scale' => 1,
-                'profile' => 'Watt'
-            ]*/
+            ]
         
     ];
 }

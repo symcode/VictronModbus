@@ -109,8 +109,8 @@ class VictronModbus extends Module
                     IPS_Sleep(200);
                 }
                 // read register
-                //$value = $this->modbus->readMultipleRegisters($this->unit_id, (int)$address, $config['count']);
                 $value = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => $address , "Quantity" => $config['count'], "Data" => "")));
+                $this->SendDebug("GetDataRAW", " ".count($value)." : ".$value[1], 0);
                 $value = (unpack("n*", substr($value,2)));
 
                 // continue if value is still an array
@@ -124,12 +124,14 @@ class VictronModbus extends Module
                 }
                 // convert decimals
 
-                elseif ($config['scale'] == 1) {
-                    $value = $value[1];
+                elseif ($config['scale'] == 0) {
+                    $value = $value[1].$value[2].$value[3].$value[4].$value[5].$value[6];
+                } elseif ($config['scale'] == 1) {
+                    $value = (float)$value[1];
                 } elseif ($config['scale'] == 10) {
-                    $value = $value[1]/10;
+                    $value = (float)$value[1]/10;
                 } elseif ($config['scale'] == 100) {
-                    $value = $value[1]/100;
+                    $value = (float)$value[1]/100;
                 }
                 $this->SendDebug("ScaleData", " ".count($value)." : ".$value, 0);
                 // set profile
