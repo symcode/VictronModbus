@@ -22,6 +22,7 @@ class VictronModbus extends Module
 {
     use InstanceHelper;
     public $data = [];
+    //public $position = [];
     protected $profile_mappings = [];
     protected $archive_mappings = [];
     /**public function __construct($InstanceID) {
@@ -41,7 +42,7 @@ class VictronModbus extends Module
         $this->RegisterPropertyInteger('interval', 5);
 
         // register timers
-        $this->RegisterTimer('UpdateData', 0, $this->_getPrefix() . '_SaveData($_IPS[\'TARGET\'], false);');
+        $this->RegisterTimer('UpdateData', 0, VictronModbus_SaveData($_IPS[\'TARGET\'], false);');
 
     }
     /**
