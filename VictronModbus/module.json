@@ -4,10 +4,10 @@
   "type": 3,
   "vendor": "Victron",
   "aliases": [],
-  "parentRequirements": ["{77B31ABB-18FA-4B91-BB63-E5B2AB5588F4}"],
+  "parentRequirements": ["{E310B701-4AE7-458E-B618-EC13A1A6F6A8}"],
   "childRequirements": [],
   "implemented": [
-    "{018EF6B5-AB94-40C6-AA53-46943E824ACF}"
+    "{77B31ABB-18FA-4B91-BB63-E5B2AB5588F4}"
   ],
   "prefix": "VictronModbus",
   "url": "https://github.com/symcode/VictronModbus"
