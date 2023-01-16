@@ -103,24 +103,24 @@ class VictronModbus extends Module
         // read data
         foreach ($addresses as $address => $config) {
             try {
-                $this->SendDebug("ReadData", ": ".$address,0);
+                $this->SendDebug("ReadData", " : ".$address,0);
                 // wait some time before continue
                 if (count($addresses) > 2) {
                     IPS_Sleep(200);
                 }
                 // read register
                 $value = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => $address , "Quantity" => $config['count'], "Data" => "")));
-                $this->SendDebug("GetDataRAW", " ".count($value)." : ".$value[1], 0);
+                $this->SendDebug("GetDataRAW", " : ".$value[1], 0);
                 $value = (unpack("n*", substr($value,2)));
 
                 // continue if value is still an array
                 /**if (is_array($value)) {
                     continue;
                 }*/
-                $this->SendDebug("GetData", " ".count($value)." : ".$value[1], 0);
+                $this->SendDebug("GetData", " : ".$value[1], 0);
                 // map value
                 if (isset($config['mapping'][$value])) {
-                    $value = $this->Translate($config['mapping'][$value]);
+                    $value = $config['mapping'][$value];
                 }
                 // convert decimals
 
@@ -133,7 +133,7 @@ class VictronModbus extends Module
                 } elseif ($config['scale'] == 100) {
                     $value = (float)$value[1]/100;
                 }
-                $this->SendDebug("ScaleData", " ".count($value)." : ".$value, 0);
+                $this->SendDebug("ScaleData", " : ".$value, 0);
                 // set profile
                 if (isset($config['profile']) && !isset($this->profile_mappings[$config['name']])) {
                     $this->profile_mappings[$config['name']] = $config['profile'];
@@ -154,33 +154,7 @@ class VictronModbus extends Module
             $this->SaveData();
         }
     }
-    public function RequestRead() {
 
-        //$Address = 0x334;
-        $GridL1 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => 820 , "Quantity" => 1, "Data" => "")));
-        //$this->SendDebug("GetData", "Grid L1".": ".$GridL1, 0);
-        $GridL1 = (unpack("n*", substr($GridL1,2)));
-        $this->SendDebug("GetData", "Grid L1".": ".$GridL1[1].",".$GridL1[2], 0);
-        SetValue($this->GetIDForIdent("GridL1"), ($GridL1[1] + ($GridL1[2] << 16))/1);
-        $this->SendDebug("GetData", "Grid L1".": ".($GridL1[1] + ($GridL1[2] << 16))/1, 0);
-
-        //$Address = 0x335;
-        $GridL2 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => 821 , "Quantity" => 1, "Data" => "")));
-        //$this->SendDebug("GetData", "Grid L2".": ".$GridL2, 0);
-        $GridL2 = (unpack("n*", substr($GridL2,2)));
-        $this->SendDebug("GetData", "Grid L2".": ".$GridL2[1].",".$GridL2[2], 0);
-        SetValue($this->GetIDForIdent("GridL2"), ($GridL2[1] + ($GridL2[2] << 16))/1);
-        $this->SendDebug("GetData", "Grid L2".": ".($GridL2[1] + ($GridL2[2] << 16))/1, 0);
-
-        //$Address = 0x336;
-        $GridL3 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => 822 , "Quantity" => 1, "Data" => "")));
-        //$this->SendDebug("GetData", "Grid L3".": ".$GridL3, 0);
-        $GridL3 = (unpack("n*", substr($GridL3,2)));
-        $this->SendDebug("GetData", "Grid L3".": ".$GridL3[1].",".$GridL3[2], 0);
-        SetValue($this->GetIDForIdent("GridL3"), ($GridL3[1] + ($GridL3[2] << 16))/1);
-        $this->SendDebug("GetData", "Grid L3".": ".($GridL3[1] + ($GridL3[2] << 16))/1, 0);
-
-    }
     /**
      * create custom variable profile
      * @param string $profile_id
@@ -209,6 +183,4 @@ class VictronModbus extends Module
                 break;
         endswitch;
     }
-
-
 }
