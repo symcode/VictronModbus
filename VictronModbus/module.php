@@ -110,13 +110,12 @@ class VictronModbus extends Module
                 }
                 // read register
                 $value = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => $address , "Quantity" => $config['count'], "Data" => "")));
-                $this->SendDebug("GetDataRAW", " : ".$value[0].$value[1], 0);
                 $value = (unpack("n*", substr($value,2)));
 
                 // continue if value is still an array
-                /**if (is_array($value)) {
+                if (is_array($value)) {
                     continue;
-                }*/
+                }
                 $this->SendDebug("GetData", " : ".$value[0].$value[1], 0);
                 // map value
                 if (isset($config['mapping'][$value])) {
