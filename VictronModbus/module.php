@@ -121,13 +121,17 @@ class VictronModbus extends Module
                 // map value
                 if (isset($config['mapping'][$value])) {
                     $value = $this->Translate($config['mapping'][$value]);
-                } // convert decimals
-                elseif ($config['scale'] == 10) {
-                    $value = $value*10;
+                }
+                // convert decimals
+
+                elseif ($config['format'] == 1) {
+                    $value = $value[2];
+                } elseif ($config['scale'] == 10) {
+                    $value = $value[2]*10;
                 } elseif ($config['format'] == 0.01) {
-                    $value = $value*0.01;
+                    $value = $value[2]*0.01;
                 } elseif ($config['format'] == -10) {
-                    $value = $value*-10;
+                    $value = $value[2]*-10;
                 }
 
                 // set profile
