@@ -127,11 +127,9 @@ class VictronModbus extends Module
                 elseif ($config['scale'] == 1) {
                     $value = $value[1];
                 } elseif ($config['scale'] == 10) {
-                    $value = $value[1]*10;
-                } elseif ($config['scale'] == 0.01) {
-                    $value = $value[1]*0.01;
-                } elseif ($config['scale'] == -10) {
-                    $value = $value[1]*-10;
+                    $value = $value[1]/10;
+                } elseif ($config['scale'] == 100) {
+                    $value = $value[1]/100;
                 }
                 $this->SendDebug("ScaleData", " ".count($value)." : ".$value, 0);
                 // set profile

@@ -226,14 +226,14 @@ class VictronModbusRegister
                 'name' => 'Battery Consumed Amphours (System)',
                 'count' => 1,
                 'type' => 'U16',
-                'scale' => -10,
+                'scale' => 10,
                 'profile' => '~Electricity'
             ],
             846 => [
                 'name' => 'Battery Time to Go (System)',
                 'count' => 1,
                 'type' => 'U16',
-                'scale' => 0.01,
+                'scale' => 100,
                 'profile' => 'Hours'
             ],
             850 => [
