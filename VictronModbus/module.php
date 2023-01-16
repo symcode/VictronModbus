@@ -39,6 +39,7 @@ class VictronModbus extends IPSModule {
         $Address = 0x334;
         $GridL1 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => $Address , "Quantity" => 2, "Data" => "")));
         $GridL1 = (unpack("n*", substr($GridL1,2)));
+        $this->SendDebug("GetData", $this->GetIDForIdent("GridL1").": ".$GridL1, 0);
         SetValue($this->GetIDForIdent("GridL1"), ($GridL1[1] + ($GridL1[2] << 16))/1);
         $Address = 0x335;
         $GridL2 = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => $Address , "Quantity" => 2, "Data" => "")));
