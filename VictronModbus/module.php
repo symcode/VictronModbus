@@ -112,7 +112,7 @@ class VictronModbus extends Module
                 //$value = $this->modbus->readMultipleRegisters($this->unit_id, (int)$address, $config['count']);
                 $value = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => $address , "Quantity" => 1, "Data" => "")));
                 $value = (unpack("n*", substr($value,2)));
-                $this->SendDebug("GetData", " ".count($value)." : ".$value[1].",".$value[2], 0);
+                $this->SendDebug("GetData", " ".count($value)." : ".$value[1], 0);
                 // continue if value is still an array
                 if (is_array($value)) {
                     continue;
@@ -125,13 +125,13 @@ class VictronModbus extends Module
                 // convert decimals
 
                 elseif ($config['format'] == 1) {
-                    $value = $value[2];
+                    $value = $value[1];
                 } elseif ($config['scale'] == 10) {
-                    $value = $value[2]*10;
+                    $value = $value[1]*10;
                 } elseif ($config['format'] == 0.01) {
-                    $value = $value[2]*0.01;
+                    $value = $value[1]*0.01;
                 } elseif ($config['format'] == -10) {
-                    $value = $value[2]*-10;
+                    $value = $value[1]*-10;
                 }
 
                 // set profile
