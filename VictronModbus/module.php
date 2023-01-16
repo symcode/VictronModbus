@@ -7,16 +7,30 @@ define('__MODULE__', dirname(__FILE__));
 require_once(__ROOT__ . '/libs/helpers/autoload.php');
 require_once(__MODULE__ . '/VictronModbusRegister.php');
 
+/**
+ * Class VictronModbus
+ * IP-Symcon Victron Modbus Module
+ *
+ * @version     0.1
+ * @category    Symcon
+ * @package     VictronModbus
+ * @author      Hermann Dötsch <info@doetsch-hermann.de>
+ * @link        https://github.com/symcode
+ *
+ */
 class VictronModbus extends Module
 {
     use InstanceHelper;
     public $data = [];
-    public function __construct($InstanceID) {
+    protected $profile_mappings = [];
+    protected $archive_mappings = [];
+    /**public function __construct($InstanceID) {
 
         //Never delete this line!
         parent::__construct($InstanceID);
 
     }
+     */
     public function Create() {
 
         //Never delete this line!
