@@ -27,8 +27,8 @@ class VictronModbus extends IPSModule {
         parent::ApplyChanges();
 
 
-        $this->RegisterVariableFloat("GridL1", "Grid L1", "Watt.14490", 3);
-        $this->RegisterVariableFloat("GridL2", "Grid L2", "Watt.14490", 3);
+        $this->RegisterVariableFloat("GridL1", "Grid L1", "Watt.14490", 1);
+        $this->RegisterVariableFloat("GridL2", "Grid L2", "Watt.14490", 2);
         $this->RegisterVariableFloat("GridL3", "Grid L3", "Watt.14490", 3);
         // $this->RegisterVariableFloat("kWh", "Total kWh", "Electricity", 4);
         $this->SetTimerInterval("Poller", $this->ReadPropertyInteger("Poller"));
