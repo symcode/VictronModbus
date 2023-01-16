@@ -181,6 +181,34 @@ class VictronModbus extends Module
         $this->SendDebug("GetData", "Grid L3".": ".($GridL3[1] + ($GridL3[2] << 16))/1, 0);
 
     }
+    /**
+     * create custom variable profile
+     * @param string $profile_id
+     * @param string $name
+     */
+    protected function CreateCustomVariableProfile(string $profile_id, string $name)
+    {
+        switch ($name):
+            case 'Watt':
+                IPS_CreateVariableProfile($profile_id, 2); // float
+                IPS_SetVariableProfileDigits($profile_id, 0); // 0 decimals
+                IPS_SetVariableProfileText($profile_id, '', ' W'); // Watt
+                IPS_SetVariableProfileIcon($profile_id, 'Electricity');
+                break;
+            case 'kWh.Fixed':
+                IPS_CreateVariableProfile($profile_id, 2); // float
+                IPS_SetVariableProfileDigits($profile_id, 0); // 0 decimals
+                IPS_SetVariableProfileText($profile_id, '', ' kWh'); // kWh
+                IPS_SetVariableProfileIcon($profile_id, 'Electricity');
+                break;
+            case 'Hours':
+                IPS_CreateVariableProfile($profile_id, 2); // float
+                IPS_SetVariableProfileDigits($profile_id, 1); // 1 decimal
+                IPS_SetVariableProfileText($profile_id, '', ' ' . $this->Translate('h')); // h
+                IPS_SetVariableProfileIcon($profile_id, 'Clock');
+                break;
+        endswitch;
+    }
 
 
 }
