@@ -113,8 +113,8 @@ class VictronModbus extends Module
                 $value = (unpack("n*", substr($value,2)));
 
                 // map value
-                if (isset($config['mapping'])) {
-                    $value = $config['mapping'][$value];
+                if (isset($config['mapping'][$value])) {
+                    $value = $this->Translate($config['mapping'][$value]);
                     $this->SendDebug("Mapping", " : ".print_r($value), 0);
                 }
 
