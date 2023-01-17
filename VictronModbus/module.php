@@ -33,7 +33,7 @@ class VictronModbus extends Module
 
         $this->ConnectParent("{A5F663AB-C400-4FE5-B207-4D67CC030564}");
 
-        $this->RegisterPropertyInteger('interval', 5);
+        $this->RegisterPropertyInteger('interval', 10);
         $this->RegisterTimer('UpdateData', 0, $this->_getPrefix() . '_UpdateValues($_IPS[\'TARGET\'], false);');
 
     }
@@ -185,7 +185,7 @@ class VictronModbus extends Module
                 IPS_SetVariableProfileIcon($profile_id, 'Electricity');
                 break;
             case 'intWatt':
-                IPS_CreateVariableProfile($profile_id, 3); // float
+                IPS_CreateVariableProfile($profile_id, 1); // integer
                 IPS_SetVariableProfileDigits($profile_id, 0); // 0 decimals
                 IPS_SetVariableProfileText($profile_id, '', ' W'); // Watt für Integer
                 IPS_SetVariableProfileIcon($profile_id, 'Electricity');
