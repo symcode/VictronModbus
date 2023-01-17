@@ -262,7 +262,22 @@ class VictronModbusRegister
                 'type' => 0,
                 'scale' => 1,
                 'profile' => 'Watt'
+            ],
+            865 => [
+                'name' => 'VE.Bus charge current (System)',
+                'count' => 1,
+                'type' => 0,
+                'scale' => 10,
+                'profile' => '~Ampere'
+            ],
+            866 => [
+                'name' => 'VE.Bus charge power (System)',
+                'count' => 1,
+                'type' => 0,
+                'scale' => 1,
+                'profile' => 'Watt'
             ]
+
         
     ];
 }
