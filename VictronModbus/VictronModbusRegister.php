@@ -131,35 +131,35 @@ class VictronModbusRegister
             820 => [
                 'name' => 'Grid L1',
                 'count' => 1,
-                'type' => 1,
+                'type' => 0,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
             821 => [
                 'name' => 'Grid L2',
                 'count' => 1,
-                'type' => 1,
+                'type' => 0,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
             822 => [
                 'name' => 'Grid L3',
                 'count' => 1,
-                'type' => 1,
+                'type' => 0,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
             823 => [
                 'name' => 'Genset L1',
                 'count' => 1,
-                'type' => 1,
+                'type' => 0,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
             824 => [
                 'name' => 'Genset L2',
                 'count' => 1,
-                'type' => 1,
+                'type' => 0,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
@@ -192,7 +192,7 @@ class VictronModbusRegister
             841 => [
                 'name' => 'Battery Current (System)',
                 'count' => 1,
-                'type' => 1,
+                'type' => 0,
                 'scale' => 10,
                 'profile' => '~Ampere'
             ],
@@ -245,7 +245,7 @@ class VictronModbusRegister
             851 => [
                 'name' => 'PV - DC-coupled current',
                 'count' => 1,
-                'type' => 1,
+                'type' => 0,
                 'scale' => 10,
                 'profile' => '~Ampere'
             ],
@@ -259,7 +259,7 @@ class VictronModbusRegister
             860 => [
                 'name' => 'DC System Power',
                 'count' => 1,
-                'type' => 1,
+                'type' => 0,
                 'scale' => 1,
                 'profile' => 'Watt'
             ]
