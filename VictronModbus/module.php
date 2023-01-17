@@ -184,7 +184,7 @@ class VictronModbus extends Module
                 IPS_SetVariableProfileText($profile_id, '', ' W'); // Watt
                 IPS_SetVariableProfileIcon($profile_id, 'Electricity');
                 break;
-            case '~Watt':
+            case 'intWatt':
                 IPS_CreateVariableProfile($profile_id, 3); // float
                 IPS_SetVariableProfileDigits($profile_id, 0); // 0 decimals
                 IPS_SetVariableProfileText($profile_id, '', ' W'); // Watt für Integer
