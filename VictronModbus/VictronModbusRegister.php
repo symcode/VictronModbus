@@ -22,13 +22,13 @@ class VictronModbusRegister
                 'name' => 'Serial (System)',
                 'count' => 6,
                 'type' => 0,
-                'scale' => 0
+                'scale' => 1
             ],
             806 => [
                 'name' => 'CCGX Relay 1 state',
                 'count' => 1,
                 'type' => 0,
-                'scale' => 0,
+                'scale' => 1,
                 'mapping' => [
                     0 => 'open',
                     1 => 'close'
@@ -38,7 +38,7 @@ class VictronModbusRegister
                 'name' => 'CCGX Relay 2 state',
                 'count' => 1,
                 'type' => 0,
-                'scale' => 0,
+                'scale' => 1,
                 'mapping' => [
                     0 => 'open',
                     1 => 'close'
@@ -173,8 +173,8 @@ class VictronModbusRegister
             826 => [
                 'name' => 'Active input source',
                 'count' => 1,
-                'type' => 1,
-                'scale' => 0,
+                'type' => 0,
+                'scale' => 1,
                 'mapping' => [
                     0 => 'Unknown',
                     1 => 'Grid',
@@ -214,7 +214,7 @@ class VictronModbusRegister
                 'name' => 'Battery state (System)',
                 'count' => 1,
                 'type' => 0,
-                'scale' => 0,
+                'scale' => 1,
                 'mapping' => [
                     0 => 'idle',
                     1 => 'charging',
