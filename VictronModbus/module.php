@@ -117,7 +117,7 @@ class VictronModbus extends Module
                         if (intval($config['type'] == 0)) {
                             $value = ($value / floatval($config['scale']));
                         } else {
-                            $value = $this->bin16dec($value / floatval($config['scale']));
+                            $value = floatval($this->bin16dec($value / floatval($config['scale'])));
                         }
                     }
                 }
@@ -185,7 +185,7 @@ class VictronModbus extends Module
                 IPS_SetVariableProfileIcon($profile_id, 'Clock');
                 break;
             case 'Battery':
-                IPS_CreateVariableProfile($profile_id, 3); // float
+                IPS_CreateVariableProfile($profile_id, 3); // integer
                 IPS_SetVariableProfileDigits($profile_id, 0); // 0 decimals
                 IPS_SetVariableProfileText($profile_id, '', ' %'); // Prozent
                 IPS_SetVariableProfileIcon($profile_id, 'Battery');
