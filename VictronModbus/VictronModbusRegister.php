@@ -147,7 +147,7 @@ class VictronModbusRegister
                 'name' => 'Grid L1',
                 'count' => 1,
                 'signed' => 1,
-                'type' => 2,
+                'type' => 1,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
@@ -155,7 +155,7 @@ class VictronModbusRegister
                 'name' => 'Grid L2',
                 'count' => 1,
                 'signed' => 1,
-                'type' => 2,
+                'type' => 1,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
@@ -163,7 +163,7 @@ class VictronModbusRegister
                 'name' => 'Grid L3',
                 'count' => 1,
                 'signed' => 1,
-                'type' => 2,
+                'type' => 1,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
@@ -171,7 +171,7 @@ class VictronModbusRegister
                 'name' => 'Genset L1',
                 'count' => 1,
                 'signed' => 1,
-                'type' => 2,
+                'type' => 1,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
@@ -179,7 +179,7 @@ class VictronModbusRegister
                 'name' => 'Genset L2',
                 'count' => 1,
                 'signed' => 1,
-                'type' => 2,
+                'type' => 1,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
@@ -187,7 +187,7 @@ class VictronModbusRegister
                 'name' => 'Genset L3',
                 'count' => 1,
                 'signed' => 1,
-                'type' => 2,
+                'type' => 1,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
@@ -232,9 +232,9 @@ class VictronModbusRegister
                 'name' => 'Battery State of Charge (System)',
                 'count' => 1,
                 'signed' => 0,
-                'type' => 1,
+                'type' => 2,
                 'scale' => 1,
-                'profile' => 'Battery'
+                'profile' => '~Battery.100'
             ],
             844 => [
                 'name' => 'Battery State (System)',
