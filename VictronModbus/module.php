@@ -114,9 +114,9 @@ class VictronModbus extends Module
 
                     // convert signed value
                     if (intval($config['signed'] == 0)) {
-                        $value = ($value / floatval($config['scale']));
+                        $value = ($value * floatval($config['scale']));
                     } else {
-                        $value = ($this->bin16dec($value / floatval($config['scale'])));
+                        $value = ($this->bin16dec($value * floatval($config['scale'])));
                     }/**
                     if ($config['type'] == 0) {
                         $value = boolval($value);           // convert to Bool
