@@ -22,7 +22,7 @@ class VictronModbusRegister
                 'name' => 'Serial (System)',
                 'count' => 6,
                 'signed' => 0,
-                'type' => 1,
+                'type' => 4,
                 'scale' => 1
             ],
             806 => [

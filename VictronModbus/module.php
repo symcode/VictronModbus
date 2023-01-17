@@ -117,7 +117,7 @@ class VictronModbus extends Module
                         $value = ($value / floatval($config['scale']));
                     } else {
                         $value = ($this->bin16dec($value / floatval($config['scale'])));
-                    }
+                    }/**
                     if ($config['type'] == 0) {
                         $value = boolval($value);           // convert to Bool
                     } else if ($config['type'] == 1) {
@@ -126,7 +126,7 @@ class VictronModbus extends Module
                         $value = intval($value);            // convert to Interger
                     } else if ($config['type'] == 3) {
                         $value = strval($value);            // convert to String
-                    }
+                    }*/
                 }
 
                 // continue if value is still an array
