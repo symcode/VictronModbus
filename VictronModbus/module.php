@@ -126,18 +126,6 @@ class VictronModbus extends Module
                     $value = $this->Translate($config['mapping'][$value]);
                 }
 
-                /**
-                // convert decimals
-                elseif ($config['scale'] == 0){
-                    $value = (string)$value[1];
-                } elseif ($config['scale'] == 1) {
-                    $value = (float)$value[1];
-                } elseif ($config['scale'] == 10) {
-                    $value = (float)$value[1]/10;
-                } elseif ($config['scale'] == 100) {
-                    $value = (float)$value[1]/100;
-                }
-                */
                 // set profile
                 if (isset($config['profile']) && !isset($this->profile_mappings[$config['name']])) {
                     $this->profile_mappings[$config['name']] = $config['profile'];
