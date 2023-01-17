@@ -263,20 +263,7 @@ trait ModuleHelper
             IPS_SetIcon($variable_id, $this->icon_mappings[$name]);
         }
 
-        if($type == 0 ) {
-            SetValueBoolean($variable_id, boolval($value));
-        }
-        if($type == 1 ) {
-            SetValueFloat($variable_id, floatval($value));
-        }
-        if($type == 2 ) {
-            SetValueInteger($variable_id, intval($value));
-        }
-        if($type == 3 ) {
-            SetValueString($variable_id, strval($value));
-        }
-
-        // SetValue($variable_id, $value);
+        SetValue($variable_id, $value);
 
         // return variable id
         return $variable_id;
