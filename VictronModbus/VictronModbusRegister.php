@@ -131,35 +131,35 @@ class VictronModbusRegister
             820 => [
                 'name' => 'Grid L1',
                 'count' => 1,
-                'type' => 0,
+                'type' => 1,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
             821 => [
                 'name' => 'Grid L2',
                 'count' => 1,
-                'type' => 0,
+                'type' => 1,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
             822 => [
                 'name' => 'Grid L3',
                 'count' => 1,
-                'type' => 0,
+                'type' => 1,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
             823 => [
                 'name' => 'Genset L1',
                 'count' => 1,
-                'type' => 0,
+                'type' => 1,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
             824 => [
                 'name' => 'Genset L2',
                 'count' => 1,
-                'type' => 0,
+                'type' => 1,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
@@ -262,14 +262,14 @@ class VictronModbusRegister
                 'type' => 0,
                 'scale' => 1,
                 'profile' => 'Watt'
-            ],
+            ],/**
             865 => [
                 'name' => 'VE.Bus charge current (System)',
                 'count' => 1,
-                'type' => 0,
+                'type' => 1,
                 'scale' => 10,
                 'profile' => '~Ampere'
-            ],
+            ],*/
             866 => [
                 'name' => 'VE.Bus charge power (System)',
                 'count' => 1,
