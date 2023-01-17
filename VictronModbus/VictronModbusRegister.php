@@ -71,7 +71,8 @@ class VictronModbusRegister
                 'signed' => 0,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'Watt'
+                'profile' => 'Watt',
+                'archive' => 1 // archive: counter
             ],
             812 => [
                 'name' => 'PV - AC-coupled on input L2',
@@ -79,7 +80,8 @@ class VictronModbusRegister
                 'signed' => 0,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'Watt'
+                'profile' => 'Watt',
+                'archive' => 1 // archive: counter
             ],
             813 => [
                 'name' => 'PV - AC-coupled on input L3',
@@ -87,7 +89,8 @@ class VictronModbusRegister
                 'signed' => 0,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'Watt'
+                'profile' => 'Watt',
+                'archive' => 1 // archive: counter
             ],
             814 => [
                 'name' => 'PV - AC-coupled on generator L1',
@@ -119,7 +122,8 @@ class VictronModbusRegister
                 'signed' => 0,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'Watt'
+                'profile' => 'Watt',
+                'archive' => 1 // archive: counter
             ],
             818 => [
                 'name' => 'AC Consumption L2',
@@ -127,7 +131,8 @@ class VictronModbusRegister
                 'signed' => 0,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'Watt'
+                'profile' => 'Watt',
+                'archive' => 1 // archive: counter
             ],
             819 => [
                 'name' => 'AC Consumption L3',
@@ -135,7 +140,8 @@ class VictronModbusRegister
                 'signed' => 0,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'Watt'
+                'profile' => 'Watt',
+                'archive' => 1 // archive: counter
             ],
             820 => [
                 'name' => 'Grid L1',
@@ -143,7 +149,8 @@ class VictronModbusRegister
                 'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'Watt'
+                'profile' => 'Watt',
+                'archive' => 1 // archive: counter
             ],
             821 => [
                 'name' => 'Grid L2',
@@ -151,7 +158,8 @@ class VictronModbusRegister
                 'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'Watt'
+                'profile' => 'Watt',
+                'archive' => 1 // archive: counter
             ],
             822 => [
                 'name' => 'Grid L3',
@@ -159,7 +167,8 @@ class VictronModbusRegister
                 'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'Watt'
+                'profile' => 'Watt',
+                'archive' => 1 // archive: counter
             ],
             823 => [
                 'name' => 'Genset L1',
@@ -228,7 +237,8 @@ class VictronModbusRegister
                 'signed' => 0,
                 'type' => 2,
                 'scale' => 1,
-                'profile' => '~Battery.100'
+                'profile' => '~Battery.100',
+                'archive' => 0 // archive: default
             ],
             844 => [
                 'name' => 'Battery State (System)',
