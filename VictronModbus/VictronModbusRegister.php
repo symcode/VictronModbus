@@ -211,7 +211,7 @@ class VictronModbusRegister
                 'profile' => 'Battery'
             ],
             844 => [
-                'name' => 'Battery state (System)',
+                'name' => 'Battery State (System)',
                 'count' => 1,
                 'type' => 0,
                 'scale' => 1,

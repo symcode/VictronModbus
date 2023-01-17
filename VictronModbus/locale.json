@@ -5,7 +5,6 @@
       "Connection has been established.": "Verbindung wurde hergestellt.",
       "Error: Please enter the ip address and the tcp port of your Victron Modbus device.": "Fehler: Bitte gib die IP-Adresse und den TCP Port deines Victron Modbus GerÃ¤tes ein.",
       "Error: Could not read data from your Victron Modbus device.": "Fehler: Konnte keine Daten von deinem Victron Modbus GerÃ¤t auslesen.",
-      "IP Address": "IP Adresse",
       "Seconds": "Sekunden",
       "Interval, when all values will updating.": "Intervall, in dem alle Werte aktualisiert werden.",
       "Unfortunately no device were found. Please try again in a few seconds.": "Es wurde leider kein GerÃ¤t gefunden. Probiere es in ein paar Sekunden erneut.",
@@ -53,10 +52,16 @@
       "Device-ID": "Modell",
       "Serial (System)": "Seriennummer",
       "h": "Std.",
+      "idle": "Leerlauf",
+      "charging": "Laden",
+      "discharging": "Entladen",
+      "Unknown": "Unbekannt",
+      "Grid": "Netz",
+      "Shore power": "Landstrom",
+      "open": "geöffnet",
+      "close": "geschlossen",
       "___ [ Logging ] ________________________________________________________________________________________": "___ [ Debug Log ] _____________________________________________________________________________________________",
       "enable logging": "Log Meldungen aktivieren",
-      "Device": "GerÃ¤tetyp",
-      "Default": "Standard",
       "___ [ Module Settiungs ] _______________________________________________________________________________": "___ [ Modul Einstellungen ] ___________________________________________________________________________"
     }
   }
