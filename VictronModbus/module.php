@@ -114,19 +114,19 @@ class VictronModbus extends Module
 
                     // convert signed value
                     if (intval($config['signed'] == 0)) {
-                        $value = ($value * floatval($config['scale']));
+                        $value = ($value / floatval($config['scale']));
                     } else {
-                        $value = ($this->bin16dec($value * floatval($config['scale'])));
-                    }/**
+                        $value = ($this->bin16dec($value / floatval($config['scale'])));
+                    }
                     if ($config['type'] == 0) {
                         $value = boolval($value);           // convert to Bool
                     } else if ($config['type'] == 1) {
                         $value = floatval($value);          // convert to Float
                     } else if ($config['type'] == 2) {
-                        $value = intval($value);            // convert to Interger
+                        $value = intval($value);            // convert to Integer
                     } else if ($config['type'] == 3) {
                         $value = strval($value);            // convert to String
-                    }*/
+                    }
                 }
 
                 // continue if value is still an array
@@ -182,12 +182,6 @@ class VictronModbus extends Module
                 IPS_CreateVariableProfile($profile_id, 2); // float
                 IPS_SetVariableProfileDigits($profile_id, 0); // 0 decimals
                 IPS_SetVariableProfileText($profile_id, '', ' W'); // Watt
-                IPS_SetVariableProfileIcon($profile_id, 'Electricity');
-                break;
-            case 'intWatt':
-                IPS_CreateVariableProfile($profile_id, 1); // integer
-                // IPS_SetVariableProfileDigits($profile_id, 0); // 0 decimals
-                IPS_SetVariableProfileText($profile_id, '', ' W'); // Watt für Integer
                 IPS_SetVariableProfileIcon($profile_id, 'Electricity');
                 break;
             case 'Hours':

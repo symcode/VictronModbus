@@ -143,7 +143,7 @@ class VictronModbusRegister
                 'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'intWatt'
+                'profile' => 'Watt'
             ],
             821 => [
                 'name' => 'Grid L2',
@@ -151,7 +151,7 @@ class VictronModbusRegister
                 'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'intWatt'
+                'profile' => 'Watt'
             ],
             822 => [
                 'name' => 'Grid L3',
@@ -159,7 +159,7 @@ class VictronModbusRegister
                 'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'intWatt'
+                'profile' => 'Watt'
             ],
             823 => [
                 'name' => 'Genset L1',
@@ -167,7 +167,7 @@ class VictronModbusRegister
                 'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'intWatt'
+                'profile' => 'Watt'
             ],
             824 => [
                 'name' => 'Genset L2',
@@ -175,7 +175,7 @@ class VictronModbusRegister
                 'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'intWatt'
+                'profile' => 'Watt'
             ],
             825 => [
                 'name' => 'Genset L3',
@@ -183,7 +183,7 @@ class VictronModbusRegister
                 'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'intWatt'
+                'profile' => 'Watt'
             ],
             826 => [
                 'name' => 'Active input source',
@@ -280,7 +280,7 @@ class VictronModbusRegister
                 'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'intWatt'
+                'profile' => 'Watt'
             ],
             860 => [
                 'name' => 'DC System Power',
