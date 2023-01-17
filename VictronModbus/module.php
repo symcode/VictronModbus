@@ -1,6 +1,5 @@
 <?php
 
-// declare(strict_types=1);
 define('__ROOT__', dirname(dirname(__FILE__)));
 define('__MODULE__', dirname(__FILE__));
 
@@ -26,13 +25,7 @@ class VictronModbus extends Module
     private $applied = false;
     protected $profile_mappings = [];
     protected $archive_mappings = [];
-    /**public function __construct($InstanceID) {
 
-        //Never delete this line!
-        parent::__construct($InstanceID);
-
-    }
-     */
     public function Create() {
 
         //Never delete this line!
@@ -97,7 +90,10 @@ class VictronModbus extends Module
             $position++;
         }
     }
-
+    /**
+     * read data via parent (Modbus Gateway)
+     * @param array $addresses
+     */
     private function ReadData(array $addresses)
     {
         // read data
@@ -110,25 +106,32 @@ class VictronModbus extends Module
                 // read register
                 $value = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => $address , "Quantity" => $config['count'], "Data" => "")));
                 $value = (unpack("n*", substr($value,2)));
-                If (is_array($value)) {
-                    if (count($value) == 1) {
-                        $value = $value[1];
 
-                        if (intval($config['signed'] == 0)) {
-                            $value = ($value / floatval($config['scale']));
-                        } else {
-                            $value = ($this->bin16dec($value / floatval($config['scale'])));
-                        }
-                        if ($config['type'] == 0) {
-                            $value = boolval($value);
-                        } else if ($config['type'] == 1) {
-                            $value = floatval($value);
-                        } else if ($config['type'] == 2) {
-                            $value = intval($value);
-                        } else if ($config['type'] == 3) {
-                            $value = strval($value);
-                        }
+                // value isn´t an array ... just a value ;-)
+                if (count($value) == 1) {
+
+                    $value = $value[1];
+
+                    // convert signed value
+                    if (intval($config['signed'] == 0)) {
+                        $value = ($value / floatval($config['scale']));
+                    } else {
+                        $value = ($this->bin16dec($value / floatval($config['scale'])));
                     }
+                    if ($config['type'] == 0) {
+                        $value = boolval($value);           // convert to Bool
+                    } else if ($config['type'] == 1) {
+                        $value = floatval($value);          // convert to Float
+                    } else if ($config['type'] == 2) {
+                        $value = intval($value);            // convert to Interger
+                    } else if ($config['type'] == 3) {
+                        $value = strval($value);            // convert to String
+                    }
+                }
+
+                // continue if value is still an array
+                if (is_array($value)) {
+                    continue;
                 }
                 // map value
                 if (isset($config['mapping'][$value])) {
@@ -192,12 +195,6 @@ class VictronModbus extends Module
                 IPS_SetVariableProfileDigits($profile_id, 1); // 1 decimal
                 IPS_SetVariableProfileText($profile_id, '', ' ' . $this->Translate('h')); // Hours
                 IPS_SetVariableProfileIcon($profile_id, 'Clock');
-                break;
-            case 'Battery':
-                IPS_CreateVariableProfile($profile_id, 3); // integer
-                IPS_SetVariableProfileDigits($profile_id, 0); // 0 decimals
-                IPS_SetVariableProfileText($profile_id, '', ' %'); // Prozent
-                IPS_SetVariableProfileIcon($profile_id, 'Battery');
                 break;
         endswitch;
     }
