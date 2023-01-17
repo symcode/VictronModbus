@@ -199,7 +199,7 @@ class VictronModbusRegister
             842 => [
                 'name' => 'Battery Power (System)',
                 'count' => 1,
-                'type' => 1,
+                'type' => 0,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
