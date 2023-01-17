@@ -181,6 +181,7 @@ class VictronModbusRegister
             843 => [
                 'name' => 'Battery State of Charge (System)',
                 'count' => 1,
+                'scale' => 1,
                 'profile' => '~Battery.100'
             ],
             844 => [
