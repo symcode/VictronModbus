@@ -159,6 +159,17 @@ class VictronModbus extends Module
         }
     }
 
+    private function bin16dec($dec)
+    {
+        // converts 16bit binary number string to integer using two's complement
+        $BinString = decbin($dec);
+        $DecNumber = bindec($BinString) & 0xFFFF; // only use bottom 16 bits
+        If (0x8000 & $DecNumber) {
+            $DecNumber = - (0x010000 - $DecNumber);
+        }
+        return $DecNumber;
+    }
+
     /**
      * create custom variable profile
      * @param string $profile_id

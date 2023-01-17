@@ -166,7 +166,7 @@ class VictronModbusRegister
             825 => [
                 'name' => 'Genset L3',
                 'count' => 1,
-
+                'type' => 1,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
