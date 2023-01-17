@@ -110,16 +110,18 @@ class VictronModbus extends Module
                 // read register
                 $value = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => $address , "Quantity" => $config['count'], "Data" => "")));
                 $value = (unpack("n*", substr($value,2)));
-                elseif ($config['scale'] == 0){
-                $value = (string)$value[1];
-                }
+
+
                 // map value
                 if (isset($config['mapping'][$value])) {
+                    $value = (string)$value[1];
                     $value = $this->Translate($config['mapping'][$value]);
                 }
 
                 // convert decimals
-                elseif ($config['scale'] == 1) {
+                elseif ($config['scale'] == 0){
+                    $value = (string)$value[1];
+                } elseif ($config['scale'] == 1) {
                     $value = (float)$value[1];
                 } elseif ($config['scale'] == 10) {
                     $value = (float)$value[1]/10;
