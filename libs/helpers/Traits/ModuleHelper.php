@@ -264,16 +264,16 @@ trait ModuleHelper
         }
 
         if($type == 0 ) {
-            SetValueBoolean($variable_id, $value);
+            SetValueBoolean($variable_id, boolval($value));
         }
         if($type == 1 ) {
-            SetValueFloat($variable_id, $value);
+            SetValueFloat($variable_id, floatval($value));
         }
         if($type == 2 ) {
-            SetValueInteger($variable_id, $value);
+            SetValueInteger($variable_id, intval($value));
         }
         if($type == 3 ) {
-            SetValueString($variable_id, $value);
+            SetValueString($variable_id, strval($value));
         }
 
         // SetValue($variable_id, $value);
