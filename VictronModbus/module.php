@@ -110,14 +110,23 @@ class VictronModbus extends Module
                 // read register
                 $value = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => $address , "Quantity" => $config['count'], "Data" => "")));
                 $value = (unpack("n*", substr($value,2)));
+                If (is_array($value)) {
+                    if (count($Result) == 1) {
+                        $value = $value[1];
 
-
+                        if ($config['type'] == 0) {
+                            $value = ($value / $config['scale']);
+                        } else {
+                            $value = $this->bin16dec($value / $config['scale']);
+                        }
+                    }
+                }
                 // map value
                 if (isset($config['mapping'][$value])) {
-                    $value = (string)$value[1];
                     $value = $this->Translate($config['mapping'][$value]);
                 }
 
+                /**
                 // convert decimals
                 elseif ($config['scale'] == 0){
                     $value = (string)$value[1];
@@ -128,7 +137,7 @@ class VictronModbus extends Module
                 } elseif ($config['scale'] == 100) {
                     $value = (float)$value[1]/100;
                 }
-
+                */
                 // set profile
                 if (isset($config['profile']) && !isset($this->profile_mappings[$config['name']])) {
                     $this->profile_mappings[$config['name']] = $config['profile'];
