@@ -111,7 +111,7 @@ class VictronModbus extends Module
                 $value = $this->SendDataToParent(json_encode(Array("DataID" => "{E310B701-4AE7-458E-B618-EC13A1A6F6A8}", "Function" => 3, "Address" => $address , "Quantity" => $config['count'], "Data" => "")));
                 $value = (unpack("n*", substr($value,2)));
                 If (is_array($value)) {
-                    if (count($Result) == 1) {
+                    if (count($value) == 1) {
                         $value = $value[1];
 
                         if ($config['type'] == 0) {
