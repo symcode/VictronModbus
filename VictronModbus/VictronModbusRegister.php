@@ -259,6 +259,7 @@ class VictronModbusRegister
             860 => [
                 'name' => 'DC System Power',
                 'count' => 1,
+                'type' => 1,
                 'scale' => 1,
                 'profile' => 'Watt'
             ]
