@@ -247,7 +247,7 @@ class VictronModbusRegister
                 'count' => 1,
                 'signed' => 0,
                 'type' => 1,
-                'scale' => 10,
+                'scale' => -10,
                 'profile' => '~Electricity'
             ],
             846 => [
@@ -255,7 +255,7 @@ class VictronModbusRegister
                 'count' => 1,
                 'signed' => 0,
                 'type' => 1,
-                'scale' => 100,
+                'scale' => 0.01,
                 'profile' => 'Hours'
             ],
             850 => [
