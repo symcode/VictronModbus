@@ -114,10 +114,10 @@ class VictronModbus extends Module
                     if (count($value) == 1) {
                         $value = $value[1];
 
-                        if ($config['type'] == 0) {
-                            $value = ($value / $config['scale']);
+                        if (intval($config['type'] == 0)) {
+                            $value = ($value / floatval($config['scale']));
                         } else {
-                            $value = $this->bin16dec($value / $config['scale']);
+                            $value = $this->bin16dec($value / floatval($config['scale']));
                         }
                     }
                 }
