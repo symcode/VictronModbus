@@ -188,7 +188,7 @@ class VictronModbusRegister
             826 => [
                 'name' => 'Active input source',
                 'count' => 1,
-                'signed' => 0,
+                'signed' => 1,
                 'type' => 4,
                 'scale' => 1,
                 'mapping' => [
@@ -209,7 +209,7 @@ class VictronModbusRegister
             841 => [
                 'name' => 'Battery Current (System)',
                 'count' => 1,
-                'signed' => 0,
+                'signed' => 1,
                 'type' => 1,
                 'scale' => 10,
                 'profile' => '~Ampere'
@@ -217,7 +217,7 @@ class VictronModbusRegister
             842 => [
                 'name' => 'Battery Power (System)',
                 'count' => 1,
-                'signed' => 0,
+                'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
                 'profile' => 'Watt'
