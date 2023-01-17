@@ -284,7 +284,7 @@ class VictronModbusRegister
                 'name' => 'Charger power',
                 'count' => 1,
                 'signed' => 1,
-                'type' => 2,
+                'type' => 1,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],
