@@ -14,7 +14,7 @@ require_once(__MODULE__ . '/VictronModbusRegister.php');
  * @category    Symcon
  * @package     VictronModbus
  * @author      Hermann Dötsch <info@doetsch-hermann.de>
- * @link        https://github.com/symcode
+ * @link        https://github.com/symcode/VictronModbus
  *
  */
 class VictronModbus extends Module
@@ -184,10 +184,10 @@ class VictronModbus extends Module
                 IPS_SetVariableProfileText($profile_id, '', ' W'); // Watt
                 IPS_SetVariableProfileIcon($profile_id, 'Electricity');
                 break;
-            case 'kWh.Fixed':
-                IPS_CreateVariableProfile($profile_id, 2); // float
+            case '~Watt':
+                IPS_CreateVariableProfile($profile_id, 3); // float
                 IPS_SetVariableProfileDigits($profile_id, 0); // 0 decimals
-                IPS_SetVariableProfileText($profile_id, '', ' kWh'); // kWh.Fixed
+                IPS_SetVariableProfileText($profile_id, '', ' W'); // Watt für Integer
                 IPS_SetVariableProfileIcon($profile_id, 'Electricity');
                 break;
             case 'Hours':

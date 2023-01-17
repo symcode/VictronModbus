@@ -6,9 +6,9 @@
  *
  * @version     0.1
  * @category    Symcon
- * @package     de.symcode.victronenergy
+ * @package     VictronModbus
  * @author      Hermann Dötsch <info@doetsch-hermann.de>
- * @link        https://github.com/symcode
+ * @link        https://github.com/symcode/VictronModbus
  *
  */
 class VictronModbusRegister
@@ -18,13 +18,7 @@ class VictronModbusRegister
             /**
              * Global
              */
-            800 => [
-                'name' => 'Serial (System)',
-                'count' => 6,
-                'signed' => 0,
-                'type' => 4,
-                'scale' => 1
-            ],
+
             806 => [
                 'name' => 'CCGX Relay 1 state',
                 'count' => 1,
@@ -149,7 +143,7 @@ class VictronModbusRegister
                 'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'Watt'
+                'profile' => '~Watt'
             ],
             821 => [
                 'name' => 'Grid L2',
@@ -157,7 +151,7 @@ class VictronModbusRegister
                 'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'Watt'
+                'profile' => '~Watt'
             ],
             822 => [
                 'name' => 'Grid L3',
@@ -165,7 +159,7 @@ class VictronModbusRegister
                 'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'Watt'
+                'profile' => '~Watt'
             ],
             823 => [
                 'name' => 'Genset L1',
@@ -173,7 +167,7 @@ class VictronModbusRegister
                 'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'Watt'
+                'profile' => '~Watt'
             ],
             824 => [
                 'name' => 'Genset L2',
@@ -181,7 +175,7 @@ class VictronModbusRegister
                 'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'Watt'
+                'profile' => '~Watt'
             ],
             825 => [
                 'name' => 'Genset L3',
@@ -189,7 +183,7 @@ class VictronModbusRegister
                 'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'Watt'
+                'profile' => '~Watt'
             ],
             826 => [
                 'name' => 'Active input source',
@@ -286,7 +280,7 @@ class VictronModbusRegister
                 'signed' => 1,
                 'type' => 1,
                 'scale' => 1,
-                'profile' => 'Watt'
+                'profile' => '~Watt'
             ],
             860 => [
                 'name' => 'DC System Power',
