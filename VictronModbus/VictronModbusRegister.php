@@ -208,7 +208,7 @@ class VictronModbusRegister
                 'count' => 1,
                 'type' => 0,
                 'scale' => 1,
-                'profile' => '~Battery.100'
+                'profile' => 'Battery'
             ],
             844 => [
                 'name' => 'Battery state (System)',
@@ -252,7 +252,7 @@ class VictronModbusRegister
             855 => [
                 'name' => 'Charger power',
                 'count' => 1,
-                'type' => 0,
+                'type' => 1,
                 'scale' => 1,
                 'profile' => 'Watt'
             ],

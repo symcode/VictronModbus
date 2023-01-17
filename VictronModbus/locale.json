@@ -45,7 +45,7 @@
       "Battery Time to Go (System)": "Restlaufzeit der Batterie (System)",
       "PV - DC-coupled power": "PV - DC-gekoppelte Leistung",
       "PV - DC-coupled current": "PV - DC-gekoppelter Strom",
-      "Charger power": "Ladestrom",
+      "Charger power": "Ladeleistung",
       "DC System Power": "DC-Systemleistung",
       "VE.Bus charge current (System)": "VE.Bus charge current (System)",
       "VE.Bus charge power (System)": "VE.Bus Ladeleistung (System)",

@@ -184,6 +184,12 @@ class VictronModbus extends Module
                 IPS_SetVariableProfileText($profile_id, '', ' ' . $this->Translate('h')); // Hours
                 IPS_SetVariableProfileIcon($profile_id, 'Clock');
                 break;
+            case 'Battery':
+                IPS_CreateVariableProfile($profile_id, 3); // float
+                IPS_SetVariableProfileDigits($profile_id, 0); // 0 decimals
+                IPS_SetVariableProfileText($profile_id, '', ' %'); // Prozent
+                IPS_SetVariableProfileIcon($profile_id, 'Battery');
+                break;
         endswitch;
     }
 }
